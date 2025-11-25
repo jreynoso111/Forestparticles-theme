@@ -29,7 +29,7 @@ Version: 1.0.0
 
 body {
     font-family: 'Manrope', system-ui, -apple-system, sans-serif;
-    background: radial-gradient(circle at 32% 18%, rgba(111, 15, 32, 0.38) 0%, rgba(24, 4, 11, 0.88) 34%, #050003 100%);
+    background: radial-gradient(circle at 32% 18%, rgba(111, 15, 32, 0.28) 0%, rgba(24, 4, 11, 0.72) 34%, #050003 100%);
     color: var(--color-text);
     min-height: 100vh;
     overflow-x: hidden;
@@ -51,9 +51,9 @@ body::after {
     content: "";
     position: fixed;
     inset: 0;
-    background: radial-gradient(circle at 64% 28%, rgba(255, 94, 108, 0.18), rgba(255, 94, 108, 0) 32%),
-        radial-gradient(circle at 24% 22%, rgba(111, 15, 32, 0.4), rgba(111, 15, 32, 0) 42%),
-        linear-gradient(150deg, rgba(30, 3, 10, 0.92), rgba(11, 1, 6, 0.94));
+    background: radial-gradient(circle at 64% 28%, rgba(255, 94, 108, 0.12), rgba(255, 94, 108, 0) 32%),
+        radial-gradient(circle at 24% 22%, rgba(111, 15, 32, 0.28), rgba(111, 15, 32, 0) 42%),
+        linear-gradient(150deg, rgba(30, 3, 10, 0.78), rgba(11, 1, 6, 0.72));
     z-index: -2;
     pointer-events: none;
 }

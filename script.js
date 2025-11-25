@@ -21,10 +21,10 @@ function createParticles() {
     const particles = [];
     const config = {
         count: 130,
-        maxVelocity: 0.72,
-        minVelocity: 0.015,
-        accelRange: 0.018,
-        radius: [0.8, 4.6],
+        maxVelocity: 0.44,
+        minVelocity: 0.01,
+        accelRange: 0.012,
+        radius: [0.8, 4.8],
         hues: [
             { center: 355, variance: 12, weight: 0.55 }, // guava pink
             { center: 50, variance: 10, weight: 0.2 },   // sun yellow
@@ -32,8 +32,8 @@ function createParticles() {
         ],
         lightness: [32, 90],
         flicker: 0.32,
-        swirlSpeed: 0.0011,
-        flowPush: 0.018,
+        swirlSpeed: 0.0008,
+        flowPush: 0.012,
     };
 
     let speedBoostUntil = 0;
@@ -47,29 +47,7 @@ function createParticles() {
     function init() {
         particles.length = 0;
         for (let i = 0; i < config.count; i++) {
-            const direction = Math.random() * Math.PI * 2;
-            const speed = Math.random() * (config.maxVelocity - config.minVelocity) + config.minVelocity;
-            const bandCenter = canvas.height * 0.5;
-            const bandSpread = canvas.height * 0.18;
-            particles.push({
-                x: Math.random() * canvas.width,
-                y: sampleBand(bandCenter, bandSpread),
-                vx: Math.cos(direction) * speed,
-                vy: Math.sin(direction) * speed,
-                ax: (Math.random() * 2 - 1) * config.accelRange,
-                ay: (Math.random() * 2 - 1) * config.accelRange,
-                accelDrift: (Math.random() * 2 - 1) * config.accelRange,
-                r: Math.random() * (config.radius[1] - config.radius[0]) + config.radius[0],
-                hue: sampleHue(),
-                hueDrift: (Math.random() * 2 - 1) * 0.006,
-                saturation: 60 + Math.random() * 30,
-                maxV: speed * (1.4 + Math.random() * 2.2),
-                lightness: Math.random() * (config.lightness[1] - config.lightness[0]) + config.lightness[0],
-                flickerOffset: Math.random() * Math.PI * 2,
-                flickerScale: 0.55 + Math.random() * 1.35,
-                flickerRate: 0.0015 + Math.random() * 0.0025,
-                opacity: 0.55 + Math.random() * 0.45,
-            });
+            particles.push(createParticle());
         }
     }
 
@@ -80,10 +58,28 @@ function createParticles() {
         const flowX = Math.cos(swirlAngle) * config.flowPush;
         const flowY = Math.sin(swirlAngle) * config.flowPush;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const largeParticles = particles.filter(p => p.r >= 3.4);
+
         for (const p of particles) {
             // Adjust acceleration slightly to introduce a wandering motion
             p.ax += (Math.random() * 2 - 1) * config.accelRange * 0.35 + p.accelDrift * 0.08;
             p.ay += (Math.random() * 2 - 1) * config.accelRange * 0.35 + p.accelDrift * 0.08;
+
+            if (p.r <= 2.2 && largeParticles.length && Math.random() < 0.18) {
+                const target = nearestLarge(p, largeParticles);
+                if (target) {
+                    const dx = target.x - p.x;
+                    const dy = target.y - p.y;
+                    const dist = Math.max(1, Math.hypot(dx, dy));
+                    const tangential = { x: -dy / dist, y: dx / dist };
+                    const pull = {
+                        x: (dx / dist) * 0.0025,
+                        y: (dy / dist) * 0.0025,
+                    };
+                    p.vx += tangential.x * 0.035 + pull.x;
+                    p.vy += tangential.y * 0.035 + pull.y;
+                }
+            }
 
             const localMax = p.maxV * activeBoost;
             p.vx = clamp((p.vx + p.ax + flowX) * activeBoost, -localMax, localMax);
@@ -164,27 +160,71 @@ function createParticles() {
     }
 
     function resetParticle(p, canvas, config) {
-        const direction = Math.random() * Math.PI * 2;
-        const speed = Math.random() * (config.maxVelocity - config.minVelocity) + config.minVelocity;
+        const fresh = createParticle();
+        Object.assign(p, fresh);
+    }
+
+    function createParticle() {
+        const edge = Math.floor(Math.random() * 4);
+        const margin = 64;
         const bandCenter = canvas.height * 0.5;
         const bandSpread = canvas.height * 0.18;
+        const targetY = sampleBand(bandCenter, bandSpread);
+        const targetX = Math.random() * canvas.width;
 
-        p.x = Math.random() * canvas.width;
-        p.y = sampleBand(bandCenter, bandSpread);
-        p.vx = Math.cos(direction) * speed;
-        p.vy = Math.sin(direction) * speed;
-        p.ax = (Math.random() * 2 - 1) * config.accelRange;
-        p.ay = (Math.random() * 2 - 1) * config.accelRange;
-        p.accelDrift = (Math.random() * 2 - 1) * config.accelRange;
-        p.r = Math.random() * (config.radius[1] - config.radius[0]) + config.radius[0];
-        p.hue = sampleHue();
-        p.hueDrift = (Math.random() * 2 - 1) * 0.006;
-        p.saturation = 60 + Math.random() * 30;
-        p.maxV = speed * (1.4 + Math.random() * 2.2);
-        p.lightness = Math.random() * (config.lightness[1] - config.lightness[0]) + config.lightness[0];
-        p.flickerOffset = Math.random() * Math.PI * 2;
-        p.flickerScale = 0.55 + Math.random() * 1.35;
-        p.flickerRate = 0.0015 + Math.random() * 0.0025;
-        p.opacity = 0.55 + Math.random() * 0.45;
+        let x, y;
+        if (edge === 0) { // left
+            x = -margin;
+            y = Math.random() * canvas.height;
+        } else if (edge === 1) { // right
+            x = canvas.width + margin;
+            y = Math.random() * canvas.height;
+        } else if (edge === 2) { // top
+            x = Math.random() * canvas.width;
+            y = -margin;
+        } else { // bottom
+            x = Math.random() * canvas.width;
+            y = canvas.height + margin;
+        }
+
+        const dirX = targetX - x;
+        const dirY = targetY - y;
+        const angle = Math.atan2(dirY, dirX) + (Math.random() * 0.5 - 0.25);
+        const speed = Math.random() * (config.maxVelocity - config.minVelocity) + config.minVelocity;
+
+        return {
+            x,
+            y,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed,
+            ax: (Math.random() * 2 - 1) * config.accelRange,
+            ay: (Math.random() * 2 - 1) * config.accelRange,
+            accelDrift: (Math.random() * 2 - 1) * config.accelRange,
+            r: Math.random() * (config.radius[1] - config.radius[0]) + config.radius[0],
+            hue: sampleHue(),
+            hueDrift: (Math.random() * 2 - 1) * 0.006,
+            saturation: 60 + Math.random() * 30,
+            maxV: speed * (1.35 + Math.random() * 2.0),
+            lightness: Math.random() * (config.lightness[1] - config.lightness[0]) + config.lightness[0],
+            flickerOffset: Math.random() * Math.PI * 2,
+            flickerScale: 0.55 + Math.random() * 1.35,
+            flickerRate: 0.0015 + Math.random() * 0.0025,
+            opacity: 0.55 + Math.random() * 0.45,
+        };
+    }
+
+    function nearestLarge(p, largeParticles) {
+        let closest = null;
+        let minDist = Infinity;
+        for (const big of largeParticles) {
+            const dx = big.x - p.x;
+            const dy = big.y - p.y;
+            const dist = dx * dx + dy * dy;
+            if (dist < minDist) {
+                minDist = dist;
+                closest = big;
+            }
+        }
+        return closest;
     }
 }

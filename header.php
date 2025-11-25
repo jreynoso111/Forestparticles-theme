@@ -21,10 +21,10 @@
                     'menu_class'     => 'nav-links',
                     'fallback_cb'    => function () {
                         echo '<ul class="nav-links">';
-                        echo '<li><a href="' . esc_url( home_url( '/' ) ) . '">Home</a></li>';
-                        echo '<li><a href="' . esc_url( home_url( '/merch' ) ) . '">Merch</a></li>';
-                        echo '<li><a href="' . esc_url( home_url( '/blog' ) ) . '">Blog</a></li>';
-                        echo '<li><a href="' . esc_url( home_url( '/contact' ) ) . '">Contact</a></li>';
+                        echo '<li><a href="' . esc_url( home_url( '/' ) ) . '">Inicio</a></li>';
+                        echo '<li><a href="' . esc_url( home_url( '/merch' ) ) . '">Obra</a></li>';
+                        echo '<li><a href="' . esc_url( home_url( '/blog' ) ) . '">Bitácora</a></li>';
+                        echo '<li><a href="' . esc_url( home_url( '/contact' ) ) . '">Contacto</a></li>';
                         echo '</ul>';
                     },
                 )

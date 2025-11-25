@@ -8,79 +8,73 @@ get_header();
 
 <section class="hero">
     <div>
-        <p class="kicker">Shop</p>
-        <h1>Merch grid with the same ambient vibe.</h1>
-        <p class="subtitle">Use these sample cards as a guide when replacing content with Hostinger boxes inside
-            WordPress.</p>
+        <p class="kicker">Obra</p>
+        <h1>Piezas que viven en este universo.</h1>
+        <p class="subtitle">Un muestrario curado para mostrar discos, sesiones y arte visual de Riccie. Reemplaza cada
+            bloque con tus módulos de WordPress y mantén la misma atmósfera.</p>
         <div class="actions">
-            <a class="btn primary" href="#tees">View items</a>
-            <a class="btn" href="<?php echo esc_url( home_url( '/contact' ) ); ?>">Request custom bundle</a>
+            <a class="btn primary" href="#tees">Ver piezas</a>
+            <a class="btn" href="<?php echo esc_url( home_url( '/contact' ) ); ?>">Solicitar colaboración</a>
         </div>
     </div>
 </section>
 
 <section id="tees" class="section">
     <div class="section-header">
-        <h2 class="section-title">Essentials</h2>
-        <span class="pill">Layered · Cozy</span>
+        <h2 class="section-title">Música</h2>
+        <span class="pill">Discografía · Sesiones</span>
     </div>
     <div class="cards-grid">
         <article class="card">
-            <p class="tag">T-shirt</p>
-            <h3>Glowing Pines</h3>
-            <p>Vintage wash cotton tee with neon sapling icon and interior neck print.</p>
+            <p class="tag">LP</p>
+            <h3>Oraciones de humo</h3>
+            <p>La nueva entrega de Riccie, con percusión afrocaribeña y sintetizadores granulares.</p>
             <div class="tag-row">
-                <span class="tag">XS-XXL</span>
-                <span class="tag">100% Cotton</span>
+                <span class="tag">Vinilo · Digital</span>
+                <span class="tag">2024</span>
             </div>
-            <div class="price">$32</div>
         </article>
         <article class="card">
-            <p class="tag">Crewneck</p>
-            <h3>Echo Grid</h3>
-            <p>Loopback fleece featuring the particle lattice stitched tone-on-tone across the chest.</p>
+            <p class="tag">Sesión</p>
+            <h3>Patio infinito</h3>
+            <p>Grabada en vivo con proyecciones de partículas reactivas; invita a la comunidad a un espacio íntimo.</p>
             <div class="tag-row">
-                <span class="tag">French Terry</span>
-                <span class="tag">Limited</span>
+                <span class="tag">Video</span>
+                <span class="tag">Live</span>
             </div>
-            <div class="price">$68</div>
         </article>
         <article class="card">
-            <p class="tag">Cap</p>
-            <h3>Mist Trail</h3>
-            <p>Unstructured 6-panel cap with matte silicone emblem and forest-green underbill.</p>
+            <p class="tag">Single</p>
+            <h3>Brisa roja</h3>
+            <p>Una canción breve y luminosa que mezcla acordeón y glitches; ideal para un teaser o estreno.</p>
             <div class="tag-row">
-                <span class="tag">Adjustable</span>
-                <span class="tag">Pre-washed</span>
+                <span class="tag">Streaming</span>
+                <span class="tag">Acústico</span>
             </div>
-            <div class="price">$28</div>
         </article>
     </div>
 </section>
 
 <section class="section">
     <div class="section-header">
-        <h2 class="section-title">Collectors</h2>
-        <span class="pill">Numbered · Archival</span>
+        <h2 class="section-title">Visuales</h2>
+        <span class="pill">Collage · Motion</span>
     </div>
     <div class="cards-grid">
         <article class="card">
-            <p class="tag">Vinyl</p>
-            <h3>Forest Pulse Deluxe</h3>
-            <p>2xLP with alternate artwork, copper foil spine and exclusive ambient interludes.</p>
-            <div class="price">$54</div>
+            <p class="tag">Serie</p>
+            <h3>Manos de coral</h3>
+            <p>Capas de pigmento en movimiento sobre texturas de archivo; el brillo sigue el ritmo de las congas.</p>
         </article>
         <article class="card">
-            <p class="tag">Poster</p>
-            <h3>Signal Bloom</h3>
-            <p>18x24 inch screen print on charcoal paper with dual metallic inks and blind emboss.</p>
-            <div class="price">$38</div>
+            <p class="tag">Foto</p>
+            <h3>Residencia en la montaña</h3>
+            <p>Serie fotográfica de la residencia creativa; incluye notas a mano y sonidos de campo.</p>
         </article>
         <article class="card">
-            <p class="tag">Bundle</p>
-            <h3>Field Kit</h3>
-            <p>Rope-handled tote with a patch set, enamel pin, mini zine and download codes.</p>
-            <div class="price">$64</div>
+            <p class="tag">Instalación</p>
+            <h3>Faro de humo</h3>
+            <p>Una pieza inmersiva con audio espacializado y partículas proyectadas sobre fibras rojas.</p>
         </article>
     </div>
 </section>

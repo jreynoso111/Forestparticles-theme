@@ -6,16 +6,16 @@ Version: 1.0.0
 */
 
 :root {
-    --color-deep: #0d1f1a;
-    --color-forest: #123226;
-    --color-leaf: #26c485;
-    --color-accent: #ff5f6d;
-    --color-amber: #ffc857;
-    --color-text: #f6f2e9;
-    --color-muted: #bcd4c2;
-    --card: rgba(255, 255, 255, 0.04);
-    --stroke: rgba(255, 255, 255, 0.08);
-    --shadow: 0 10px 50px rgba(0, 0, 0, 0.35);
+    --color-deep: #17040b;
+    --color-forest: #2a0915;
+    --color-leaf: #e55b7a;
+    --color-accent: #ff3d5a;
+    --color-amber: #ffb35a;
+    --color-text: #fff3e8;
+    --color-muted: #efb7b1;
+    --card: rgba(255, 255, 255, 0.05);
+    --stroke: rgba(255, 255, 255, 0.1);
+    --shadow: 0 10px 50px rgba(0, 0, 0, 0.45);
     --radius: 18px;
     --spacing: clamp(18px, 2vw, 26px);
 }
@@ -27,8 +27,8 @@ Version: 1.0.0
 }
 
 body {
-    font-family: 'Outfit', system-ui, -apple-system, sans-serif;
-    background: radial-gradient(circle at 20% 20%, #164431 0%, #0c231a 40%, #081712 100%);
+    font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+    background: radial-gradient(circle at 18% 20%, #3f0f21 0%, #240814 42%, #12040b 100%);
     color: var(--color-text);
     min-height: 100vh;
     overflow-x: hidden;
@@ -50,7 +50,7 @@ body::after {
     content: "";
     position: fixed;
     inset: 0;
-    background: linear-gradient(120deg, rgba(38, 196, 133, 0.08), rgba(255, 95, 109, 0.08));
+    background: linear-gradient(120deg, rgba(255, 61, 90, 0.12), rgba(255, 179, 90, 0.12));
     z-index: -2;
     pointer-events: none;
 }
@@ -85,7 +85,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 10;
-    background: linear-gradient(to bottom, rgba(13, 31, 26, 0.9), rgba(13, 31, 26, 0.4));
+    background: linear-gradient(to bottom, rgba(23, 4, 11, 0.92), rgba(23, 4, 11, 0.55));
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--stroke);
 }
@@ -99,7 +99,7 @@ header {
 }
 
 .logo {
-    font-family: 'Abril Fatface', 'DM Serif Display', serif;
+    font-family: 'Playfair Display', 'DM Serif Display', serif;
     font-size: clamp(24px, 3vw, 30px);
     letter-spacing: 0.08em;
     color: var(--color-text);
@@ -158,7 +158,7 @@ header {
 }
 
 .hero h1 {
-    font-family: 'Abril Fatface', 'DM Serif Display', serif;
+    font-family: 'Playfair Display', 'DM Serif Display', serif;
     font-size: clamp(46px, 6vw, 72px);
     line-height: 0.96;
     letter-spacing: -0.02em;
@@ -249,7 +249,7 @@ header {
 }
 
 .section-title {
-    font-family: 'Abril Fatface', 'DM Serif Display', serif;
+    font-family: 'Playfair Display', 'DM Serif Display', serif;
     font-size: clamp(28px, 3vw, 38px);
     letter-spacing: -0.01em;
 }
@@ -288,7 +288,7 @@ header {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(38, 196, 133, 0.08), rgba(255, 95, 109, 0.08));
+    background: linear-gradient(135deg, rgba(255, 61, 90, 0.12), rgba(255, 179, 90, 0.12));
     opacity: 0;
     transition: 0.25s ease;
     z-index: -1;

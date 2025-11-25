@@ -23,7 +23,6 @@ function createParticles() {
         count: 90,
         maxVelocity: 0.35,
         radius: [1, 2.4],
-        linkDistance: 140,
     };
 
     function resize() {
@@ -40,7 +39,7 @@ function createParticles() {
                 vx: (Math.random() * 2 - 1) * config.maxVelocity,
                 vy: (Math.random() * 2 - 1) * config.maxVelocity,
                 r: Math.random() * (config.radius[1] - config.radius[0]) + config.radius[0],
-                hue: Math.random() * 40 + 130,
+                hue: Math.random() * 30 + 345,
             });
         }
     }
@@ -61,25 +60,9 @@ function createParticles() {
         for (let i = 0; i < particles.length; i++) {
             const p = particles[i];
             ctx.beginPath();
-            ctx.fillStyle = `hsla(${p.hue}, 70%, 65%, 0.9)`;
+            ctx.fillStyle = `hsla(${p.hue}, 75%, 64%, 0.9)`;
             ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
             ctx.fill();
-
-            for (let j = i + 1; j < particles.length; j++) {
-                const p2 = particles[j];
-                const dx = p.x - p2.x;
-                const dy = p.y - p2.y;
-                const dist = Math.hypot(dx, dy);
-
-                if (dist < config.linkDistance) {
-                    const alpha = 1 - dist / config.linkDistance;
-                    ctx.strokeStyle = `rgba(255, 200, 87, ${alpha * 0.35})`;
-                    ctx.beginPath();
-                    ctx.moveTo(p.x, p.y);
-                    ctx.lineTo(p2.x, p2.y);
-                    ctx.stroke();
-                }
-            }
         }
     }
 

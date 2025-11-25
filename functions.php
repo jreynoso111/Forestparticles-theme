@@ -17,7 +17,7 @@ add_action( 'after_setup_theme', 'forestparticles_setup' );
 function forestparticles_assets() {
     wp_enqueue_style(
         'forestparticles-fonts',
-        'https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Outfit:wght@400;600;700&display=swap',
+        'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Manrope:wght@400;600;700&display=swap',
         array(),
         null
     );

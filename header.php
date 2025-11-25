@@ -11,7 +11,10 @@
 <div class="noise-overlay"></div>
 <header>
     <div class="wrapper navbar">
-        <a class="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>"><span></span><?php bloginfo( 'name' ); ?></a>
+        <a class="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+            <span class="logo-mark" aria-hidden="true"></span>
+            <span class="logo-text">RICCIE ORIACH</span>
+        </a>
         <nav>
             <?php
             wp_nav_menu(

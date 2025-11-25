@@ -104,20 +104,28 @@ header {
 .logo {
     font-family: 'Playfair Display', 'DM Serif Display', serif;
     font-size: clamp(24px, 3vw, 30px);
-    letter-spacing: 0.08em;
-    color: var(--color-text);
+    letter-spacing: 0.1em;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
-.logo span {
-    width: 12px;
-    height: 12px;
-    background: linear-gradient(120deg, var(--color-accent), var(--color-amber));
+.logo-mark {
+    width: 14px;
+    height: 14px;
+    background: radial-gradient(circle at 30% 30%, #ffd447 0%, #ff5e6c 40%, #b50c2c 100%);
     border-radius: 50%;
-    box-shadow: 0 0 20px rgba(255, 95, 109, 0.5);
+    box-shadow: 0 0 12px rgba(255, 94, 108, 0.7), 0 0 28px rgba(255, 94, 108, 0.45);
+}
+
+.logo-text {
+    background: linear-gradient(120deg, #ffb1bc, var(--color-accent) 55%, #ff7a88 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-transform: uppercase;
+    text-shadow: 0 8px 28px rgba(255, 94, 108, 0.35);
 }
 
 .nav-links {

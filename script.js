@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+function initThemeEffects() {
     const navbarLinks = document.querySelectorAll('.nav-links a');
     const currentPath = (window.location.pathname || '/').replace(/\/$/, '') || '/';
 
@@ -10,7 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     createParticles();
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initThemeEffects);
+} else {
+    initThemeEffects();
+}
 
 function createParticles() {
     const canvas = document.createElement('canvas');

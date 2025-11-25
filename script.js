@@ -1,44 +1,100 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Ricci Oriach Official Site Loaded');
+    const navbarLinks = document.querySelectorAll('.nav-links a');
+    const currentPath = (window.location.pathname || '/').replace(/\/$/, '') || '/';
 
-    // Navbar Scroll Effect
-    const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
+    navbarLinks.forEach(link => {
+        const linkPath = (new URL(link.href)).pathname.replace(/\/$/, '') || '/';
+        if (linkPath === currentPath) {
+            link.classList.add('active');
         }
     });
 
+    createParticles();
+});
 
+function createParticles() {
+    const canvas = document.createElement('canvas');
+    canvas.className = 'particle-canvas';
+    document.body.appendChild(canvas);
+    const ctx = canvas.getContext('2d');
 
-    // Scroll Animations (Intersection Observer)
-    const observerOptions = {
-        threshold: 0.2,
-        rootMargin: '0px'
+    const particles = [];
+    const config = {
+        count: 90,
+        maxVelocity: 0.35,
+        radius: [1, 2.4],
+        linkDistance: 140,
     };
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, observerOptions);
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
 
-    document.querySelectorAll('.tour-item').forEach((item, index) => {
-        item.style.transitionDelay = `${index * 0.1}s`;
-        observer.observe(item);
-    });
-
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
+    function init() {
+        particles.length = 0;
+        for (let i = 0; i < config.count; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() * 2 - 1) * config.maxVelocity,
+                vy: (Math.random() * 2 - 1) * config.maxVelocity,
+                r: Math.random() * (config.radius[1] - config.radius[0]) + config.radius[0],
+                hue: Math.random() * 40 + 130,
             });
-        });
+        }
+    }
+
+    function update() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (const p of particles) {
+            p.x += p.vx;
+            p.y += p.vy;
+
+            if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+            if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+        }
+    }
+
+    function draw() {
+        ctx.lineWidth = 1;
+        for (let i = 0; i < particles.length; i++) {
+            const p = particles[i];
+            ctx.beginPath();
+            ctx.fillStyle = `hsla(${p.hue}, 70%, 65%, 0.9)`;
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fill();
+
+            for (let j = i + 1; j < particles.length; j++) {
+                const p2 = particles[j];
+                const dx = p.x - p2.x;
+                const dy = p.y - p2.y;
+                const dist = Math.hypot(dx, dy);
+
+                if (dist < config.linkDistance) {
+                    const alpha = 1 - dist / config.linkDistance;
+                    ctx.strokeStyle = `rgba(255, 200, 87, ${alpha * 0.35})`;
+                    ctx.beginPath();
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(p2.x, p2.y);
+                    ctx.stroke();
+                }
+            }
+        }
+    }
+
+    function tick() {
+        update();
+        draw();
+        requestAnimationFrame(tick);
+    }
+
+    window.addEventListener('resize', () => {
+        resize();
+        init();
     });
-});
+
+    resize();
+    init();
+    tick();
+}

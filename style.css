@@ -7,8 +7,8 @@ Version: 1.0.0
 
 :root {
     --color-deep: #0b0407;
-    --color-forest: #180711;
-    --color-leaf: #b13045;
+    --color-forest: #13040a;
+    --color-leaf: #921f32;
     --color-accent: #ff5e6c; /* Guava Pink */
     --color-amber: #ffd447; /* Sun Yellow */
     --color-turquoise: #2ad1d1; /* Turquoise accent */
@@ -29,7 +29,7 @@ Version: 1.0.0
 
 body {
     font-family: 'Manrope', system-ui, -apple-system, sans-serif;
-    background: radial-gradient(circle at 24% 18%, rgba(255, 94, 108, 0.24) 0%, rgba(38, 11, 20, 0.62) 36%, #0b0407 100%);
+    background: radial-gradient(circle at 26% 20%, rgba(146, 31, 50, 0.22) 0%, rgba(19, 4, 10, 0.78) 34%, #090207 100%);
     color: var(--color-text);
     min-height: 100vh;
     overflow-x: hidden;
@@ -51,9 +51,9 @@ body::after {
     content: "";
     position: fixed;
     inset: 0;
-    background: radial-gradient(circle at 68% 32%, rgba(42, 209, 209, 0.18), rgba(42, 209, 209, 0) 36%),
-        radial-gradient(circle at 24% 22%, rgba(255, 94, 108, 0.3), rgba(255, 94, 108, 0) 40%),
-        linear-gradient(140deg, rgba(255, 94, 108, 0.42), rgba(17, 4, 10, 0.6));
+    background: radial-gradient(circle at 68% 32%, rgba(42, 209, 209, 0.14), rgba(42, 209, 209, 0) 32%),
+        radial-gradient(circle at 24% 22%, rgba(255, 94, 108, 0.24), rgba(255, 94, 108, 0) 36%),
+        linear-gradient(140deg, rgba(146, 31, 50, 0.55), rgba(9, 2, 7, 0.8));
     z-index: -2;
     pointer-events: none;
 }
@@ -88,9 +88,9 @@ header {
     position: sticky;
     top: 0;
     z-index: 10;
-    background: linear-gradient(to bottom, rgba(23, 4, 11, 0.92), rgba(23, 4, 11, 0.55));
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--stroke);
+    background: linear-gradient(to bottom, rgba(12, 2, 7, 0.38), rgba(12, 2, 7, 0.08));
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .navbar {

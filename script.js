@@ -21,9 +21,9 @@ function createParticles() {
     const particles = [];
     const config = {
         count: 130,
-        maxVelocity: 1.1,
-        minVelocity: 0.03,
-        accelRange: 0.022,
+        maxVelocity: 0.72,
+        minVelocity: 0.015,
+        accelRange: 0.018,
         radius: [0.8, 4.6],
         hues: [
             { center: 355, variance: 12, weight: 0.55 }, // guava pink
@@ -32,8 +32,8 @@ function createParticles() {
         ],
         lightness: [32, 90],
         flicker: 0.32,
-        swirlSpeed: 0.0014,
-        flowPush: 0.026,
+        swirlSpeed: 0.0011,
+        flowPush: 0.018,
     };
 
     let speedBoostUntil = 0;

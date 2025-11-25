@@ -19,9 +19,14 @@ if (document.readyState === 'loading') {
 }
 
 function createParticles() {
+    const existing = document.querySelector('.particle-canvas');
+    if (existing) {
+        existing.remove();
+    }
+
     const canvas = document.createElement('canvas');
     canvas.className = 'particle-canvas';
-    document.body.appendChild(canvas);
+    document.body.prepend(canvas);
     const ctx = canvas.getContext('2d');
 
     const particles = [];

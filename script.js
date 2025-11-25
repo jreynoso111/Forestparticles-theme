@@ -1,9 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     const navbarLinks = document.querySelectorAll('.nav-links a');
-    const current = window.location.pathname.split('/').pop() || 'index.html';
+    const currentPath = (window.location.pathname || '/').replace(/\/$/, '') || '/';
+
     navbarLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        if (href === current || (current === '' && href === 'index.html')) {
+        const linkPath = (new URL(link.href)).pathname.replace(/\/$/, '') || '/';
+        if (linkPath === currentPath) {
             link.classList.add('active');
         }
     });

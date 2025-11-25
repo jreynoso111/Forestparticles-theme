@@ -1,3 +1,10 @@
+/*
+Theme Name: Forest Particles
+Description: Textured Hostinger-ready theme with floating particles and sample layouts for home, merch, blog, and contact pages.
+Author: Forest Particles
+Version: 1.0.0
+*/
+
 :root {
     --color-deep: #0d1f1a;
     --color-forest: #123226;
@@ -135,6 +142,12 @@ header {
     border-color: var(--color-amber);
 }
 
+.nav-links .current-menu-item > a,
+.nav-links .current_page_item > a {
+    color: var(--color-amber);
+    border-color: var(--color-amber);
+}
+
 .hero {
     position: relative;
     min-height: 70vh;
@@ -203,6 +216,28 @@ header {
 
 .section {
     margin-top: 80px;
+}
+
+.entry-content {
+    display: grid;
+    gap: 18px;
+    color: var(--color-muted);
+}
+
+.entry-content p,
+.entry-content ul,
+.entry-content ol {
+    line-height: 1.6;
+}
+
+.entry-content a {
+    color: var(--color-amber);
+    font-weight: 700;
+}
+
+.entry-content ul,
+.entry-content ol {
+    padding-left: 18px;
 }
 
 .section-header {
@@ -343,6 +378,36 @@ header {
     line-height: 1.5;
     border-left: 2px solid var(--stroke);
     padding-left: 12px;
+}
+
+.pagination {
+    margin-top: 24px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.pagination a,
+.pagination span {
+    padding: 8px 12px;
+    border-radius: var(--radius);
+    border: 1px solid var(--stroke);
+    background: var(--card);
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.pagination .current {
+    background: linear-gradient(120deg, var(--color-accent), var(--color-amber));
+    color: #0c150f;
+    border: none;
+}
+
+.pagination a:hover {
+    color: var(--color-amber);
+    border-color: var(--color-amber);
 }
 
 .footer {

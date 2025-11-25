@@ -1,34 +1,23 @@
-# Ricci Oriach Website Walkthrough
+# Forest Particles WordPress Theme
 
-I have successfully created the high-fidelity landing page for Ricci Oriach using Vanilla HTML, CSS, and JS.
+Custom Hostinger-ready theme with the textured background, drifting particles, and sample layouts for home, merch, blog, and contact pages.
 
-## Features Implemented
+## What you get
+- WordPress theme files (`style.css`, `functions.php`, `header.php`, `footer.php`, and template files for each sample page).
+- Reusable particle animation (`script.js`) and texture assets in `/assets`.
+- Demo layouts that show how Hostinger/WordPress blocks can sit over the ambient canvas.
 
-### 1. Tropical Brutalism Design
-- **Visuals**: Used a generated collage-style hero image and a dark, textured background to match the "Folclore Alternativo" aesthetic.
-- **Typography**: Implemented `Abril Fatface` for that retro 70s serif look and `Outfit` for modern readability.
-- **Colors**:
-  - Primary: Guava Pink (#FF5E6C)
-  - Background: Deep Forest Green (#0B3B2E)
-  - Accents: Sun Yellow & Turquoise
+## How to install on Hostinger/WordPress
+1. Zip the contents of this folder (keep the `assets` directory in the root of the zip).
+2. In WordPress, go to **Appearance → Themes → Add New → Upload Theme** and upload the zip.
+3. Activate **Forest Particles**.
+4. Create pages for Home, Merch, Blog, and Contact. Under **Template** choose the matching demo template (Home uses the default front page, Merch Demo, Blog Demo, Contact Demo).
+5. Go to **Appearance → Menus** and assign your navigation to the **Primary Menu** location so the header links populate.
 
-### 2. Core Sections
-- **Hero**: Large typography with outline/fill effects, floating tropical elements, and a clear CTA.
-- **Navigation**: Fixed, glassmorphism-style navbar.
-- **Tour Dates**: A stylish list of upcoming shows.
-- **Footer**: Social links and copyright.
+## Assets
+- `assets/texture.png` — paper-like texture used in the fixed background.
+- `assets/hero.png` — example artwork (optional for your content).
 
-### 3. Interactivity
-- **Parallax Effect**: The hero image moves slightly with the mouse cursor (desktop only).
-- **Smooth Scroll**: Navigation links scroll smoothly to sections.
-- **Hover Effects**: Buttons and links have dynamic hover states (glows, lifts).
-
-## How to View
-Simply open `index.html` in your web browser. No installation or server is required.
-
-## Screenshots
-*(Note: Since this is a code-only generation, please open the file to see the live result. Below are the assets used.)*
-
-### Assets Generated
-- **Hero Collage**: `assets/hero.png`
-- **Background Texture**: `assets/texture.png`
+## Notes
+- The particle canvas is injected automatically; no extra setup is required.
+- The demo cards and lists are placeholders you can replace with Hostinger/WordPress blocks while keeping the styling.
